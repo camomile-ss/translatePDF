@@ -4,7 +4,7 @@ PDFを日本語に翻訳
 ## 使い方
 python translatePDFjp.py xxx.pdf
 
-* xxx.pdf 入力ファイル。テキストファイルも可。
+* xxx.pdf : 入力ファイル。テキストファイルも可。
 * オプション
   * -h, --help            : show this help message and exit
   * -o OUTDIR, --outdir OUTDIR : 出力ディレクトリ。 省略した場合はカレントディレクトリに出力されます。
