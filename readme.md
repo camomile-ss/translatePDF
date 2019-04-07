@@ -2,9 +2,9 @@
 PDFを日本語に翻訳
 
 ## 使い方
-python translatePDFjp.py xxxxxx.pdf
+python translatePDFjp.py xxx.pdf
 
-* textファイルも可
+* xxx.pdf 入力ファイル。テキストファイルも可。
 * オプション
   * -h, --help            : show this help message and exit
   * -o OUTDIR, --outdir OUTDIR : 出力ディレクトリ。 省略した場合はカレントディレクトリに出力されます。
@@ -14,16 +14,22 @@ python translatePDFjp.py xxxxxx.pdf
 
 ## 出力ファイル
 
-#### xxxxxx_parse_pdf.txt
+### xxx_parse_pdf.txt
 pdfから取り出したテキスト。
 入力がテキストファイルのときは作成しません。
 
-#### xxxxxx_original.txt
+### xxx_original.txt
 整形したテキスト。
 オプション -f, --formatted 指定のときは作成しません。
 
-#### xxxxxx_japanese.txt
+### xxx_japanese.txt
 日本語翻訳文。
 
 ## proxy
 環境変数を読みます。不足は >> で入力を促します。
+
+## 使っているライブラリ
+* python3
+* [googletrans](https://github.com/ssut/py-googletrans)
+* [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
+* [cchardet](https://github.com/PyYoshi/cChardet)
