@@ -9,8 +9,8 @@ python translatePDFjp.py xxx.pdf
   * -h, --help            : show this help message and exit
   * -o OUTDIR, --outdir OUTDIR : 出力ディレクトリ。 省略した場合はカレントディレクトリに出力されます。
   * -f, --formatted       : 整形済み。 余分な改行の削除などの整形が終わっているテキストファイルを入力する場合指定してください。
-  * -t TRYTIMES, --trytimes TRYTIMES : google翻訳が返答しない場合にリトライする回数。default 1。
-  * -s TRYSPAN, --tryspan TRYSPAN : google翻訳が返答しない場合にリトライする間隔(秒)。default 1。
+  * -t TRYTIMES, --trytimes TRYTIMES : 翻訳が返答しない場合にリトライする回数。default 1。
+  * -s TRYSPAN, --tryspan TRYSPAN : 翻訳が返答しない場合にリトライする間隔(秒)。default 1。
 
 ## 出力ファイル
 
