@@ -237,7 +237,7 @@ def chk_proxy():
             if ptn_now == 2:
                 print('[err] proxy input not correct.', file=sys.stderr)
                 return 9
-        # googleがブロック?
+        # 翻訳がブロック?
         except json.decoder.JSONDecodeError:
             return 0  # ここは通す
         # 他のエラー
@@ -258,7 +258,7 @@ def try_translate(text, try_span=1, try_times=1):
     while True:
         try:
             tt = translate(text)
-        # googleがブロック?
+        # 翻訳がブロック?
         except json.decoder.JSONDecodeError:
             cnt += 1
             if cnt > try_times:  # リトライ回数超えたら終わり
@@ -359,7 +359,7 @@ if __name__ == '__main__':
             # 翻訳できなかったとき
             else:
                 ng_cnt += 1
-                if ng_cnt % 5 == 0:  # 5件ごとにやめるか聞く
+                if (ng_cnt-1) % 4 == 0:  # 4件ごとにやめるか聞く
                     while True:
                         ans = input("*** {0} sections coundn't translated. exit? (y/n) >>".format(ng_cnt))
                         if ans in ['y', 'Y', 'yes', 'YES', 'Yes']:
