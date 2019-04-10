@@ -32,3 +32,4 @@ pdfから取り出したテキスト。
 * python3
 * [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
 * [cchardet](https://github.com/PyYoshi/cChardet)
+* [requests](http://docs.python-requests.org/en/master/)
