@@ -363,9 +363,9 @@ if __name__ == '__main__':
             # 翻訳できなかったとき
             else:
                 ng_cnt += 1
-                if (ng_cnt-1) % 4 == 0:  # 4件ごとにやめるか聞く
+                if (ng_cnt-1) % 4 == 0:  # 1件めと、4件ごとにやめるか聞く
                     while True:
-                        ans = input("*** {0} sections coundn't translated. exit? (y/n) >>".format(ng_cnt))
+                        ans = input("*** {0} sections not translated. exit? (y/n) >>".format(ng_cnt))
                         if ans in ['y', 'Y', 'yes', 'YES', 'Yes']:
                             # 翻訳文途中まで書いて終了
                             write_ttf(jp_text, infbase, args.outdir)
