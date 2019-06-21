@@ -312,7 +312,7 @@ if __name__ == '__main__':
     print('{0:02}:{1:02}:{2:02} start ----------------#'.format(t.tm_hour, t.tm_min, t.tm_sec))  # 開始時刻print
 
     # 出力ディレクトリを作る
-    if args.outdir != '' and not os.path.isdir(args.outdir):
+    if args.outdir and not os.path.isdir(args.outdir):
         os.makedirs(args.outdir)
 
     # pdf
