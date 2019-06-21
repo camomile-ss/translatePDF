@@ -277,7 +277,7 @@ def try_translate(text, try_span=1, try_times=1):
 def write_intf(text, infbase, outdir, sufix):
     ''' 中間ファイル書き出し '''
 
-    fname = os.path.join(args.outdir, infbase + '_' + sufix + '.txt')
+    fname = os.path.join(outdir, infbase + '_' + sufix + '.txt')
     print('\t{0} writing..'.format(fname))
     with open(fname, 'w', encoding='utf-8') as f:
         f.write(text)
@@ -296,7 +296,7 @@ if __name__ == '__main__':
     psr = argparse.ArgumentParser()
     psr.add_argument('infname', help='入力ファイル名。pdfまたはテキストファイル。')
     psr.add_argument('-o', '--outdir', help='出力ディレクトリ。\
-                     省略した場合はカレントディレクトリに出力されます。', default='')
+                     省略した場合は入力ファイルと同じ場所に出力されます。')
     psr.add_argument('-f', '--formatted', help='整形済み。\
                      余分な改行の削除などの整形が終わっているテキストファイルを入力する場合指定してください。',
                      action='store_true')
@@ -311,9 +311,15 @@ if __name__ == '__main__':
     t = time.localtime()
     print('{0:02}:{1:02}:{2:02} start ----------------#'.format(t.tm_hour, t.tm_min, t.tm_sec))  # 開始時刻print
 
-    # 出力ディレクトリを作る
-    if args.outdir and not os.path.isdir(args.outdir):
-        os.makedirs(args.outdir)
+    # 出力ディレクトリ指定あり
+    if args.outdir:
+        outdir = args.outdir
+        # ディレクトリなかったらつくる
+        if not os.path.isdir(outdir):
+            os.makedirs(outdir)
+    # 出力ディレクトリ指定なければ入力ファイルと同じ場所に出力
+    else:
+        outdir, _ = os.path.split(args.infname)
 
     # pdf
     mob = re.search(r'[^\/]*\.[pP][dD][fF]$', args.infname)
@@ -327,7 +333,7 @@ if __name__ == '__main__':
         print('getting text from pdf..')
         raw_text = parse_pdf(args.infname)
         # 中間ファイルに書き出す
-        write_intf(raw_text, infbase, args.outdir, 'parse_pdf')
+        write_intf(raw_text, infbase, outdir, 'parse_pdf')
 
     # テキストファイル
     else:
@@ -340,7 +346,7 @@ if __name__ == '__main__':
         print('formatting..')
         org_text = format_text(raw_text)  # 整形処理
         # 中間ファイルに書き出す
-        write_intf(org_text, infbase, args.outdir, 'original')
+        write_intf(org_text, infbase, outdir, 'original')
 
     # proxyチェック
     if chk_proxy():
@@ -368,7 +374,7 @@ if __name__ == '__main__':
                         ans = input("*** {0} sections not translated. exit? (y/n) >>".format(ng_cnt))
                         if ans in ['y', 'Y', 'yes', 'YES', 'Yes']:
                             # 翻訳文途中まで書いて終了
-                            write_ttf(jp_text, infbase, args.outdir)
+                            write_ttf(jp_text, infbase, outdir)
                             sys.exit()
                         if ans in ['n', 'N', 'no', 'NO', 'No']:
                             break
@@ -381,6 +387,6 @@ if __name__ == '__main__':
     print(' 100%.')
 
     # 翻訳文書き出す
-    write_ttf(jp_text, infbase, args.outdir)
+    write_ttf(jp_text, infbase, outdir)
 
     print('done.')
