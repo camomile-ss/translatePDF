@@ -1,13 +1,14 @@
 # translatePDF
 PDFを日本語に翻訳
 
-## 使い方
+## 使い方(1)
 
-* translatePDFjp.exe に、入力ファイルをドラッグ＆ドロップ
+translatePDFjp.exe に、入力ファイルをドラッグ＆ドロップ
 
-または、コマンドプロンプトから
+## 使い方(2)
+コマンドプロンプトから
 
-* translatePDFjp.exe xxx.pdf
+`translatePDFjp.exe xxx.pdf`
 
   * xxx.pdf : 入力ファイル。テキストファイルも可。
   * オプション
