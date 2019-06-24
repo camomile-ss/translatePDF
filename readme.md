@@ -2,7 +2,7 @@
 PDFを日本語に翻訳
 
 ## 使い方
-python translatePDFjp.py xxx.pdf
+`python translatePDFjp.py xxx.pdf`
 
 * xxx.pdf : 入力ファイル。テキストファイルも可。
 * オプション
